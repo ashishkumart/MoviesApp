@@ -19,6 +19,9 @@ class AuthenticationBloc
   @override
   Stream<AuthenticationState> mapEventToState(
       AuthenticationEvent event) async* {
+
+    await userRepository.getAuthorizationToken();
+
     // If application is launched, checking if user has logged in or not
     if (event is AppStarted) {
       final bool hasToken = await userRepository.hasToken();

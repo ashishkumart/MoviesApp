@@ -17,7 +17,14 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+
+    /// Username field
     final usernameField = TextFormField(
         obscureText: false,
         style: style,
@@ -31,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
           border: textFieldBorder,
         ));
 
+    /// Password field
     final passwordField = TextFormField(
         obscureText: true,
         style: style,
@@ -44,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
           border: textFieldBorder,
         ));
 
+    /// Login button
     final loginButton = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),

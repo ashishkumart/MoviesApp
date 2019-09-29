@@ -26,13 +26,23 @@ class MovieApp extends StatelessWidget {
         title: 'Movie App',
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
-            if (state is AuthenticationAuthenticated) return DashboardPage();
+            return DashboardPage(
+              authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
+            );
 
-            if (state is AuthenticationUnauthenticated) return LoginPage();
+            /*if (state is AuthenticationAuthenticated) {
+              return DashboardPage();
+            }
 
-            if (state is AuthenticationLoading) return LoadingIndicator();
+            if (state is AuthenticationUnauthenticated) {
+              return LoginPage();
+            }
 
-            return SplashPage();
+            if (state is AuthenticationLoading) {
+              return LoadingIndicator();
+            }
+
+            return SplashPage();*/
           },
         ));
   }

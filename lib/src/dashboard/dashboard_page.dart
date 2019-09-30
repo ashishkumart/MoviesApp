@@ -69,7 +69,9 @@ class DashboardPage extends StatelessWidget {
             actions: <Widget>[
               FlatButton(
                   onPressed: () {
+                    Navigator.of(context).pop();
                     bloc.dispatch(LoggedOut());
+
                   },
                   child: Text('Yes')),
               FlatButton(

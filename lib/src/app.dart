@@ -7,6 +7,7 @@ import 'package:movies_app/src/dashboard/dashboard_page.dart';
 import 'package:movies_app/src/login/login.dart';
 import 'package:movies_app/src/splash/splash.dart';
 import 'package:movies_app/src/user_repository/user_repository.dart';
+
 import 'authentication/authentication.dart';
 
 class MovieApp extends StatelessWidget {
@@ -26,23 +27,23 @@ class MovieApp extends StatelessWidget {
         title: 'Movie App',
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
-            return DashboardPage(
-              authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
-            );
-
-            /*if (state is AuthenticationAuthenticated) {
-              return DashboardPage();
+            if (state is AuthenticationAuthenticated) {
+              return DashboardPage(
+                authenticationBloc: BlocProvider.of<AuthenticationBloc>(
+                    context),
+              );
             }
 
             if (state is AuthenticationUnauthenticated) {
-              return LoginPage();
+              UserRepository userRepository = UserRepository();
+              return LoginPage(userRepository: userRepository,);
             }
 
             if (state is AuthenticationLoading) {
               return LoadingIndicator();
             }
 
-            return SplashPage();*/
+            return SplashPage();
           },
         ));
   }

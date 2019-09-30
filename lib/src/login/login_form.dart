@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/src/login/login_bloc.dart';
+import 'package:movies_app/src/login/login_event.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -58,7 +61,8 @@ class _LoginFormState extends State<LoginForm> {
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
           if (formKey.currentState.validate())
-            Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done!')));
+            BlocProvider.of<LoginBloc>(context).dispatch(LoginButtonPressed());
+            //Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done!')));
         },
         child: Text("Login",
             textAlign: TextAlign.center,

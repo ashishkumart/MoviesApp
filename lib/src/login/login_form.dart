@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/src/login/login_bloc.dart';
 import 'package:movies_app/src/login/login_event.dart';
+import 'package:movies_app/src/login/login_state.dart';
+import 'package:movies_app/src/sign_up/sign_up_page.dart';
 
 class LoginForm extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _LoginFormState();
+    return new _LoginFormState();
   }
 }
 
@@ -17,9 +19,13 @@ class _LoginFormState extends State<LoginForm> {
       borderSide: BorderSide(color: const Color(0xff01d277)));
 
   final formKey = GlobalKey<FormState>();
+  bool _autoValidate = false;
+  LoginBloc _loginBloc;
 
   @override
   Widget build(BuildContext context) {
+    _loginBloc = BlocProvider.of<LoginBloc>(context);
+
     /// Username field
     final usernameField = TextFormField(
         obscureText: false,
@@ -54,15 +60,17 @@ class _LoginFormState extends State<LoginForm> {
       borderRadius: BorderRadius.circular(30.0),
       color: Color(0xff01d277),
       child: MaterialButton(
-        minWidth: MediaQuery
-            .of(context)
-            .size
-            .width,
+        minWidth: MediaQuery.of(context).size.width,
         padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () {
-          if (formKey.currentState.validate())
-            BlocProvider.of<LoginBloc>(context).dispatch(LoginButtonPressed());
-            //Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done!')));
+          if (formKey.currentState.validate()) {
+            _loginBloc.dispatch(LoginButtonPressed(username: "", password: ""));
+          } else {
+            setState(() {
+              _autoValidate = true;
+            });
+          }
+          //Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done!')));
         },
         child: Text("Login",
             textAlign: TextAlign.center,
@@ -71,33 +79,62 @@ class _LoginFormState extends State<LoginForm> {
       ),
     );
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(36, 36, 36, 10),
-      child: Form(
-        key: formKey,
-        child: ListView(
-          children: <Widget>[
-          SizedBox(
-          height: 150,
-          child: Image.asset(
-            'lib/assets/images/logo_dark.png',
-            fit: BoxFit.contain,
-          ),
-        ),
-        SizedBox(height: 45.0),
-        usernameField,
-        SizedBox(
-        height: 45.0,
+    /// Sign Up
+    final signUpButton = FlatButton(
+        onPressed: () {
+         // BlocProvider.of<LoginBloc>(context).dispatch(SignUpButtonPressed());
+          Navigator.of(context)
+              .push(MaterialPageRoute<Null>(builder: (BuildContext context) {
+            return new SignUpPage();
+          }));
+        },
+        child: Text('Sign Up'));
+
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+       /* if (state is OpenSignUpPage)
+          Navigator.of(context)
+              .push(MaterialPageRoute<Null>(builder: (BuildContext context) {
+            return new SignUpPage();
+          }));*/
+      },
+      child: BlocBuilder<LoginBloc, LoginState>(
+        builder: (context, state) {
+          return Padding(
+              padding: const EdgeInsets.fromLTRB(36, 36, 36, 10),
+              child: Form(
+                  autovalidate: _autoValidate,
+                  key: formKey,
+                  child: ListView(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 150,
+                        child: Image.asset(
+                          'lib/assets/images/logo_dark.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      SizedBox(height: 45.0),
+                      usernameField,
+                      SizedBox(
+                        height: 45.0,
+                      ),
+                      passwordField,
+                      SizedBox(
+                        height: 45.0,
+                      ),
+                      loginButton,
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      signUpButton,
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                    ],
+                  )));
+        },
       ),
-      passwordField,
-      SizedBox(
-        height: 45.0,
-      ),
-            loginButton,
-      SizedBox(
-        height: 10.0,
-      )
-      ],
-    )));
+    );
   }
 }

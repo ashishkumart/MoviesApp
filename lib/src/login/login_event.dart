@@ -11,6 +11,6 @@ class LoginButtonPressed extends LoginEvent {
 
   LoginButtonPressed({@required this.username, @required this.password})
       : super([username, password]);
-
-
 }
+
+/*class SignUpButtonPressed extends LoginEvent {}*/

@@ -1,8 +1,8 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:movies_app/src/authentication/authentication_event.dart';
 import 'package:movies_app/src/authentication/authentication_state.dart';
 import 'package:movies_app/src/user_repository/user_repository.dart';
-import 'package:bloc/bloc.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
@@ -20,7 +20,7 @@ class AuthenticationBloc
   Stream<AuthenticationState> mapEventToState(
       AuthenticationEvent event) async* {
 
-    await userRepository.getAuthorizationToken();
+    //await userRepository.getAuthorizationToken();
 
     // If application is launched, checking if user has logged in or not
     if (event is AppStarted) {

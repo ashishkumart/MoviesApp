@@ -4,9 +4,9 @@ import 'package:movies_app/src/authentication/authentication.dart';
 import 'package:movies_app/src/common/app_tabs.dart';
 import 'package:movies_app/src/dashboard/dashboard.dart';
 import 'package:movies_app/src/dashboard/tab_selector.dart';
-import 'package:movies_app/src/popular/popular_movies_page.dart';
-import 'package:movies_app/src/top_rated/top_rated_movies_page.dart';
-import 'package:movies_app/src/upcoming/upcoming_movies_page.dart';
+import 'package:movies_app/src/movies/popular/popular_movies_page.dart';
+import 'package:movies_app/src/movies/top_rated/top_rated_movies_page.dart';
+import 'package:movies_app/src/movies/upcoming/upcoming_movies_page.dart';
 
 class DashboardPage extends StatelessWidget {
   var authenticationBloc;

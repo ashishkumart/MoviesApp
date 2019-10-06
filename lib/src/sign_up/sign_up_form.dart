@@ -39,112 +39,122 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpBloc, SignUpState>();
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-      child: Form(
-        autovalidate: _autoValidate,
-        key: _formKey,
-        child: ListView(
-          children: <Widget>[
-            // First Name Text Box
-            TextFormField(
-                obscureText: false,
-                style: style,
-                controller: _firstNameController,
-                validator: (value) {
-                  if (value.isEmpty) return 'Please enter first name';
-                  return null;
-                },
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  hintText: 'First Name',
-                  border: textFieldBorder,
-                )),
+    return BlocBuilder<SignUpBloc, SignUpState>(
+      builder: (context, state) {
 
-            SizedBox(
-              height: 20,
-            ),
-            // Last Name Text Box
-            TextFormField(
-                obscureText: false,
-                style: style,
-                controller: _lastNameController,
-                validator: (value) {
-                  if (value.isEmpty) return 'Please enter last name';
-                  return null;
-                },
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  hintText: 'Last Name',
-                  border: textFieldBorder,
-                )),
+        return Container(
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+          child: Form(
+            autovalidate: _autoValidate,
+            key: _formKey,
+            child: ListView(
+              children: <Widget>[
+                // First Name Text Box
+                TextFormField(
+                    obscureText: false,
+                    style: style,
+                    controller: _firstNameController,
+                    validator: (value) {
+                      if (value.isEmpty) return 'Please enter first name';
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      hintText: 'First Name',
+                      border: textFieldBorder,
+                    )),
 
-            SizedBox(
-              height: 20,
-            ),
-            // Email Text Box
-            TextFormField(
-                obscureText: false,
-                style: style,
-                controller: _emailController,
-                validator: (value) {
-                  if (value.isEmpty) return 'Please enter email';
-                  return null;
-                },
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  hintText: 'Email',
-                  border: textFieldBorder,
-                )),
-            SizedBox(
-              height: 20,
-            ),
-            // Password Text Box
-            TextFormField(
-                obscureText: true,
-                style: style,
-                controller: _passwordController,
-                validator: (value) {
-                  if (value.isEmpty) return 'Please enter password';
-                  return null;
-                },
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  hintText: 'Password',
-                  border: textFieldBorder,
-                )),
-            SizedBox(
-              height: 20,
-            ),
+                SizedBox(
+                  height: 20,
+                ),
+                // Last Name Text Box
+                TextFormField(
+                    obscureText: false,
+                    style: style,
+                    controller: _lastNameController,
+                    validator: (value) {
+                      if (value.isEmpty) return 'Please enter last name';
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      hintText: 'Last Name',
+                      border: textFieldBorder,
+                    )),
 
-            Material(
-              elevation: 5.0,
-              borderRadius: BorderRadius.circular(30.0),
-              color: Color(0xff01d277),
-              child: MaterialButton(
-                minWidth: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                onPressed: () {
-                  if (_formKey.currentState.validate()) {
-                  } else {
-                    setState(() {
-                      _autoValidate = true;
-                    });
-                  }
-                },
-                child: Text("Register",
-                    textAlign: TextAlign.center,
-                    style: style.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.bold)),
-              ),
+                SizedBox(
+                  height: 20,
+                ),
+                // Email Text Box
+                TextFormField(
+                    obscureText: false,
+                    style: style,
+                    controller: _emailController,
+                    validator: (value) {
+                      if (value.isEmpty) return 'Please enter email';
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      hintText: 'Email',
+                      border: textFieldBorder,
+                    )),
+                SizedBox(
+                  height: 20,
+                ),
+                // Password Text Box
+                TextFormField(
+                    obscureText: true,
+                    style: style,
+                    controller: _passwordController,
+                    validator: (value) {
+                      if (value.isEmpty) return 'Please enter password';
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                      hintText: 'Password',
+                      border: textFieldBorder,
+                    )),
+                SizedBox(
+                  height: 20,
+                ),
+
+                Material(
+                  elevation: 5.0,
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: Color(0xff01d277),
+                  child: MaterialButton(
+                    minWidth: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+
+                      } else {
+                        setState(() {
+                          _autoValidate = true;
+                        });
+                      }
+                    },
+                    child: Text("Register",
+                        textAlign: TextAlign.center,
+                        style: style.copyWith(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
             ),
-            SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
+      bloc: _signUpBloc,
     );
   }
 

@@ -1,0 +1,7 @@
+{
+  "error_empty_username": "Please enter username",
+  "hint_username": "Username",
+  "hint_password": "Password",
+  "error_empty_password": "Please enter password",
+  "label_sign_up": "Sign Up"
+}

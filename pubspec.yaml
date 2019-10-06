@@ -45,6 +45,7 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: lib/assets/fonts/Montserrat-Regular.ttf
+        - asset: lib/assets/strings/en
 
 
 

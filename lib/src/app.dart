@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/src/authentication/authentication.dart';
 import 'package:movies_app/src/common/common.dart';
-import 'package:movies_app/src/dashboard/dashboard_page.dart';
+import 'package:movies_app/src/dashboard/ui/dashboard_page.dart';
 import 'package:movies_app/src/login/login.dart';
 import 'package:movies_app/src/splash/splash.dart';
 import 'package:movies_app/src/user_repository/user_repository.dart';

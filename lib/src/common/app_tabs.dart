@@ -1,1 +1,1 @@
-enum AppTab { upcoming, popular, top_rated }
+enum AppTab { discover, movies, tv_shows, people }

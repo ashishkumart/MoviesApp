@@ -14,7 +14,7 @@ class DashboardPage extends StatelessWidget {
   DashboardPage({this.authenticationBloc}) : assert(authenticationBloc != null);
 
   String title = '';
-  var tabTitles = ["Upcoming Movies", "Popular Movies", "Top Rated Movies"];
+  var tabTitles = ["Discover", "Movies", "TV Shows", "People"];
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +48,15 @@ class DashboardPage extends StatelessWidget {
   _openPage(AppTab tab) {
     //title = tabTitles[tab.index];
     switch (tab) {
-      case AppTab.popular:
+      case AppTab.discover:
         return PopularMoviesPage();
 
-      case AppTab.top_rated:
+      case AppTab.movies:
         return TopRatedMoviesPage();
 
-      case AppTab.upcoming:
+      case AppTab.tv_shows:
+        return UpcomingMoviesPage();
+      case AppTab.people:
         return UpcomingMoviesPage();
     }
   }
@@ -71,7 +73,6 @@ class DashboardPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                     bloc.dispatch(LoggedOut());
-
                   },
                   child: Text('Yes')),
               FlatButton(

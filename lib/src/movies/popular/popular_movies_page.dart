@@ -59,10 +59,10 @@ class MoviesListWidget extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(1.0),
             child: Card(
               child: Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(2.0),
                 child: Image.network(
                   'https://image.tmdb.org/t/p/w342${movies[index].posterPath}',
                   fit: BoxFit.fill,

@@ -6,7 +6,6 @@ import 'package:movies_app/src/dashboard/bloc/dashboard.dart';
 import 'package:movies_app/src/dashboard/bloc/dashboard_event.dart';
 import 'package:movies_app/src/dashboard/ui/tab_selector.dart';
 import 'package:movies_app/src/movies/popular/popular_movies_page.dart';
-import 'package:movies_app/src/movies/top_rated/top_rated_movies_page.dart';
 import 'package:movies_app/src/movies/upcoming/upcoming_movies_page.dart';
 import 'package:movies_app/src/search/discover_delegate.dart';
 
@@ -42,8 +41,7 @@ class DashboardPage extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () {
-                  showSearch(context: context,
-                  delegate: DiscoverDelegate());
+                  showSearch(context: context, delegate: DiscoverDelegate());
                 },
               )
             ],
@@ -63,11 +61,8 @@ class DashboardPage extends StatelessWidget {
   _openPage(AppTab tab) {
     //title = tabTitles[tab.index];
     switch (tab) {
-      case AppTab.discover:
-        return PopularMoviesPage();
-
       case AppTab.movies:
-        return TopRatedMoviesPage();
+        return PopularMoviesPage();
 
       case AppTab.tv_shows:
         return UpcomingMoviesPage();

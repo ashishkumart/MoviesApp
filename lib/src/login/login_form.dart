@@ -14,9 +14,8 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-  OutlineInputBorder textFieldBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(32.0),
-      borderSide: BorderSide(color: const Color(0xff01d277)));
+  OutlineInputBorder textFieldBorder =
+      OutlineInputBorder(borderRadius: BorderRadius.circular(32.0), borderSide: BorderSide(color: const Color(0xff01d277)));
 
   final formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
@@ -72,32 +71,21 @@ class _LoginFormState extends State<LoginForm> {
           }
           //Scaffold.of(context).showSnackBar(SnackBar(content: Text('Done!')));
         },
-        child: Text("Login",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
+        child: Text("Login", textAlign: TextAlign.center, style: style.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
 
     /// Sign Up
     final signUpButton = FlatButton(
         onPressed: () {
-         // BlocProvider.of<LoginBloc>(context).dispatch(SignUpButtonPressed());
-          Navigator.of(context)
-              .push(MaterialPageRoute<Null>(builder: (BuildContext context) {
+          Navigator.of(context).push(MaterialPageRoute<Null>(builder: (BuildContext context) {
             return new SignUpPage();
           }));
         },
         child: Text('Sign Up'));
 
     return BlocListener<LoginBloc, LoginState>(
-      listener: (context, state) {
-       /* if (state is OpenSignUpPage)
-          Navigator.of(context)
-              .push(MaterialPageRoute<Null>(builder: (BuildContext context) {
-            return new SignUpPage();
-          }));*/
-      },
+      listener: (context, state) {},
       child: BlocBuilder<LoginBloc, LoginState>(
         builder: (context, state) {
           return Padding(

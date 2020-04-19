@@ -17,7 +17,6 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
         darkTheme: ThemeData(
           accentColor: Color(0xff01d277),
@@ -29,14 +28,15 @@ class MovieApp extends StatelessWidget {
           builder: (context, state) {
             if (state is AuthenticationAuthenticated) {
               return DashboardPage(
-                authenticationBloc: BlocProvider.of<AuthenticationBloc>(
-                    context),
+                authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
               );
             }
 
             if (state is AuthenticationUnauthenticated) {
               UserRepository userRepository = UserRepository();
-              return LoginPage(userRepository: userRepository,);
+              return LoginPage(
+                userRepository: userRepository,
+              );
             }
 
             if (state is AuthenticationLoading) {

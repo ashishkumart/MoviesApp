@@ -1,1 +1,1 @@
-enum AppTab { discover, movies, tv_shows, people }
+enum AppTab { movies, tv_shows, people }

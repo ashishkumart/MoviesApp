@@ -20,14 +20,9 @@ class TabSelector extends StatelessWidget {
       onTap: (index) => onTabSelected(AppTab.values[index]),
       type: BottomNavigationBarType.fixed,
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(Icons.search), title: Text('Discover')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.movie), title: Text('Movies')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.tv), title: Text('TV Shows')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.people), title: Text('People')),
+        BottomNavigationBarItem(icon: Icon(Icons.movie), title: Text('Movies')),
+        BottomNavigationBarItem(icon: Icon(Icons.tv), title: Text('TV Shows')),
+        BottomNavigationBarItem(icon: Icon(Icons.people), title: Text('People')),
       ],
     );
   }

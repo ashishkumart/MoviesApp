@@ -7,7 +7,7 @@ class DashboardBloc extends Bloc<DashboardEvent, AppTab> {
       : assert(authenticationBloc != null);*/
 
   @override
-  AppTab get initialState => AppTab.discover;
+  AppTab get initialState => AppTab.movies;
 
   @override
   Stream<AppTab> mapEventToState(DashboardEvent event) async* {
